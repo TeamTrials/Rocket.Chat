@@ -36,9 +36,9 @@ class ErrorHandler {
 		};
 	}
 
-	getRoomId(roomName) {
+	getRoomId(roomName, team) {
 		roomName = roomName.replace('#');
-		const room = RocketChat.models.Rooms.findOneByName(roomName, { fields: { _id: 1, t: 1 } });
+		const room = RocketChat.models.Rooms.findOneByName(roomName, team, { fields: { _id: 1, t: 1 } });
 		if (room && (room.t === 'c' || room.t === 'p')) {
 			return room._id;
 		} else {

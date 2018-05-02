@@ -82,6 +82,12 @@ Template.roomList.helpers({
 				};
 			}), 'lm').reverse();
 		}
+
+		const team = FlowRouter.getParam('team');
+		if(team) {
+			query.team = team;
+		}
+
 		return ChatSubscription.find(query, {sort});
 	},
 
