@@ -1,7 +1,11 @@
 /* globals RocketChat */
 import _ from 'underscore';
 
+<<<<<<< HEAD
 RocketChat.getRoomByNameOrIdWithOptionToJoin = function _getRoomByNameOrIdWithOptionToJoin({ currentUserId, nameOrId, type = '', tryDirectByUserIdOnly = false, joinChannel = true, errorOnEmpty = true }) {
+=======
+RocketChat.getRoomByNameOrIdWithOptionToJoin = function _getRoomByNameOrIdWithOptionToJoin({ currentUserId, nameOrId, team, type='', tryDirectByUserIdOnly=false, joinChannel=true, errorOnEmpty=true }) {
+>>>>>>> feature/teams-marc-jun7
 	let room;
 
 	// If the nameOrId starts with #, then let's try to find a channel or group
@@ -37,7 +41,11 @@ RocketChat.getRoomByNameOrIdWithOptionToJoin = function _getRoomByNameOrIdWithOp
 			}
 
 			room = Meteor.runAsUser(currentUserId, function() {
+<<<<<<< HEAD
 				const { rid } = Meteor.call('createDirectMessage', roomUser.username);
+=======
+				const {rid} = Meteor.call('createDirectMessage', roomUser.username, team);
+>>>>>>> feature/teams-marc-jun7
 				return RocketChat.models.Rooms.findOneById(rid);
 			});
 		}

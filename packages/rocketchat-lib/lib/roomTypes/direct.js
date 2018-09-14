@@ -5,12 +5,12 @@ export class DirectMessageRoomRoute extends RoomTypeRouteConfig {
 	constructor() {
 		super({
 			name: 'direct',
-			path: '/direct/:username',
+			path: '/:team/direct/:username'
 		});
 	}
 
 	action(params) {
-		return openRoom('d', params.username);
+		return openRoom('d', params.username, params.team);
 	}
 
 	link(sub) {
@@ -28,14 +28,17 @@ export class DirectMessageRoomType extends RoomTypeConfig {
 		});
 	}
 
-	findRoom(identifier) {
+	findRoom(identifier, team) {
+		// This "if )" added by RC core team, not TT
 		if (!RocketChat.authz.hasAtLeastOnePermission('view-d-room')) {
 			return null;
 		}
+		// End of new "if (" function added by core RC team
 
 		const query = {
 			t: 'd',
 			name: identifier,
+			team
 		};
 
 		const subscription = RocketChat.models.Subscriptions.findOne(query);

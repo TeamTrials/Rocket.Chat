@@ -21,6 +21,22 @@ class ModelSubscriptions extends RocketChat.models._Base {
 		this.tryEnsureIndex({ autoTranslate: 1 }, { sparse: 1 });
 		this.tryEnsureIndex({ autoTranslateLanguage: 1 }, { sparse: 1 });
 		this.tryEnsureIndex({ 'userHighlights.0': 1 }, { sparse: 1 });
+
+		// ttrc additions 
+		// ttrc - Marc, note for eslinting I removed quotes from name, t, code and team. please confirm. 
+		this.tryEnsureIndex({ 'u._id': 1, name: 1, t: 1, code: 1, team: 1 }, { unique: 1 });
+
+		// ttrc - Marc, this was removed by rc core team.  please confirm we dont need it.
+		// this.tryEnsureIndex({ 'unread': 1 });
+
+		// ttrc - Marc, these have all been removed by rc core team. please confirm we need all rows.
+		this.cache.ensureIndex('rid', 'array');
+		this.cache.ensureIndex('u._id', 'array');
+		this.cache.ensureIndex('name', 'array');
+		this.cache.ensureIndex(['rid', 'u._id'], 'unique');
+
+		// ttrc - this row was removed in Aug 2018 by rc core team to resolve a bug. 
+		this.cache.ensureIndex(['name', 'team', 'u._id'], 'unique');
 	}
 
 
@@ -43,9 +59,13 @@ class ModelSubscriptions extends RocketChat.models._Base {
 		return this.findOne(query, options);
 	}
 
-	findOneByRoomNameAndUserId(roomName, userId) {
+	findOneByRoomNameAndUserId(team, roomName, userId) {
+		if (this.useCache) {
+			return this.cache.findByIndex('name,team,u._id', [roomName, team, userId]).fetch();
+		}
 		const query = {
 			name: roomName,
+			team,
 			'u._id': userId,
 		};
 
@@ -788,6 +808,7 @@ class ModelSubscriptions extends RocketChat.models._Base {
 			},
 			...RocketChat.getDefaultSubscriptionPref(user),
 			...extraData,
+			team: room.team,
 		};
 
 		const result = this.insert(subscription);
