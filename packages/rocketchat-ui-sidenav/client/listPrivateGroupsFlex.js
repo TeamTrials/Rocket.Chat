@@ -69,11 +69,11 @@ Template.listPrivateGroupsFlex.onCreated(function() {
 		const query = {
 			name: new RegExp(s.trim(s.escapeRegExp(this.nameFilter.get())), 'i'),
 			t: 'p',
-			archived: { $ne: true }
+			archived: { $ne: true },
 		};
-		const team = FlowRouter.getParam( team );
+		const team = FlowRouter.getParam(team);
 
-		if(team) {
+		if (team) {
 			query.team = team;
 		}
 

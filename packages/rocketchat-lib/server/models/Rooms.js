@@ -9,11 +9,11 @@ class ModelRooms extends RocketChat.models._Base {
 		this.tryEnsureIndex({ default: 1 });
 		this.tryEnsureIndex({ t: 1 });
 
-		// ttrc additions or edits from Marc 
-		this.tryEnsureIndex({ 'name': 1, team: 1 }, { unique: 1, sparse: 1 });
-		
-		// ttrc question - Marc do we need this line -- added and removed by core team 
-		this.tryEnsureIndex({ 'usernames': 1 });
+		// ttrc additions or edits from Marc
+		this.tryEnsureIndex({ name: 1, team: 1 }, { unique: 1, sparse: 1 });
+
+		// ttrc question - Marc do we need this line -- added and removed by core team
+		this.tryEnsureIndex({ usernames: 1 });
 
 		this.tryEnsureIndex({ 'u._id': 1 });
 	}
@@ -37,7 +37,7 @@ class ModelRooms extends RocketChat.models._Base {
 	}
 
 	findOneByName(name, team, options) {
-		const query = {name, team};
+		const query = { name, team };
 
 		return this.findOne(query, options);
 	}
@@ -52,7 +52,7 @@ class ModelRooms extends RocketChat.models._Base {
 	}
 
 	findOneByDisplayName(fname, team, options) {
-		const query = {fname, team};
+		const query = { fname, team };
 
 		return this.findOne(query, options);
 	}

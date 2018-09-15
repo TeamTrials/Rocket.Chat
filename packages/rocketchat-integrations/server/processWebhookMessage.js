@@ -22,13 +22,13 @@ this.processWebhookMessage = function(messageObj, user, defaultValues = { channe
 			default:
 				channelValue = channelType + channelValue;
 
-				//Try to find the room by id or name if they didn't include the prefix.
+				// Try to find the room by id or name if they didn't include the prefix.
 				room = RocketChat.getRoomByNameOrIdWithOptionToJoin({ currentUserId: user._id, team, nameOrId: channelValue, joinChannel: true, errorOnEmpty: false });
 				if (room) {
 					break;
 				}
 
-				//We didn't get a room, let's try finding direct messages
+				// We didn't get a room, let's try finding direct messages
 				room = RocketChat.getRoomByNameOrIdWithOptionToJoin({ currentUserId: user._id, team, nameOrId: channelValue, type: 'd', tryDirectByUserIdOnly: true });
 				if (room) {
 					break;

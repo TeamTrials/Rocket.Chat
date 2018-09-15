@@ -8,9 +8,9 @@ RocketChat.models.Messages = new class extends RocketChat.models._Base {
 		this.tryEnsureIndex({ ts: 1 });
 		this.tryEnsureIndex({ 'u._id': 1 });
 		this.tryEnsureIndex({ editedAt: 1 }, { sparse: 1 });
-		
-		// ttrc addition 
-		this.tryEnsureIndex({ 'u._id': 1, 'team': 1 });
+
+		// ttrc addition
+		this.tryEnsureIndex({ 'u._id': 1, team: 1 });
 
 		this.tryEnsureIndex({ 'editedBy._id': 1 }, { sparse: 1 });
 		this.tryEnsureIndex({ rid: 1, t: 1, 'u._id': 1 });
@@ -23,9 +23,6 @@ RocketChat.models.Messages = new class extends RocketChat.models._Base {
 		this.tryEnsureIndex({ location: '2dsphere' });
 		this.tryEnsureIndex({ slackBotId: 1, slackTs: 1 }, { sparse: 1 });
 	}
-
-	//   Marc, in a version before I thought I saw you included a number or at least one addition for caching that 
-	//   does not appear here.   Is this section missing anything?   James Craig Sept 2018
 
 	countVisibleByRoomIdBetweenTimestampsInclusive(roomId, afterTimestamp, beforeTimestamp, options) {
 		const query = {

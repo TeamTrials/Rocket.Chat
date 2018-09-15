@@ -5,7 +5,7 @@ export class PrivateRoomRoute extends RoomTypeRouteConfig {
 	constructor() {
 		super({
 			name: 'group',
-			path: '/:team/group/:name'
+			path: '/:team/group/:name',
 		});
 	}
 
