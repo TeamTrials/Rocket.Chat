@@ -71,7 +71,9 @@ Template.listPrivateGroupsFlex.onCreated(function() {
 			t: 'p',
 			archived: { $ne: true },
 		};
-		const team = FlowRouter.getParam(team);
+
+
+		const team = FlowRouter.getParam('team');
 
 		if (team) {
 			query.team = team;
