@@ -38,11 +38,7 @@ RocketChat.getRoomByNameOrIdWithOptionToJoin = function _getRoomByNameOrIdWithOp
 			}
 
 			room = Meteor.runAsUser(currentUserId, function() {
-<<<<<<< HEAD
-				const { rid } = Meteor.call('createDirectMessage', roomUser.username);
-=======
 				const {rid} = Meteor.call('createDirectMessage', roomUser.username, team);
->>>>>>> feature/teams-marc-jun7
 				return RocketChat.models.Rooms.findOneById(rid);
 			});
 		}
