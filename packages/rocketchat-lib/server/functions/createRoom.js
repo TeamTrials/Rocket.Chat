@@ -25,9 +25,14 @@ RocketChat.createRoom = function(type, name, owner, members, readOnly, extraData
 		delete extraData.reactWhenReadOnly;
 	}
 
+	// Constant added by Marc's commit 7a0e697 - note by James Craig Sept 2018
+	// "const slugifiedRoomName = RocketChat.getValidRoomName(name, extraData.team);""
+	// By Sept functons in this file were fully refactored.  Marc, please confirm the
+	// proposed replacement below: "name: RocketChat.getValidRoomName(name, extraData.team),"
+
 	const now = new Date();
 	let room = Object.assign({
-		name: RocketChat.getValidRoomName(name),
+		name: RocketChat.getValidRoomName(name, extraData.team),
 		fname: name,
 		t: type,
 		msgs: 0,

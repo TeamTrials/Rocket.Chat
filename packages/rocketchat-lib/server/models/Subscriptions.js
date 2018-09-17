@@ -30,13 +30,13 @@ class ModelSubscriptions extends RocketChat.models._Base {
 		// this.tryEnsureIndex({ 'unread': 1 });
 
 		// ttrc - Marc, these have all been removed by rc core team. please confirm we need all rows.
-		this.cache.ensureIndex('rid', 'array');
-		this.cache.ensureIndex('u._id', 'array');
-		this.cache.ensureIndex('name', 'array');
-		this.cache.ensureIndex(['rid', 'u._id'], 'unique');
+		// this.cache.ensureIndex('rid', 'array');
+		// this.cache.ensureIndex('u._id', 'array');
+		// this.cache.ensureIndex('name', 'array');
+		// this.cache.ensureIndex(['rid', 'u._id'], 'unique');
 
 		// ttrc - this row was removed in Aug 2018 by rc core team to resolve a bug.
-		this.cache.ensureIndex(['name', 'team', 'u._id'], 'unique');
+		// this.cache.ensureIndex(['name', 'team', 'u._id'], 'unique');
 	}
 
 
