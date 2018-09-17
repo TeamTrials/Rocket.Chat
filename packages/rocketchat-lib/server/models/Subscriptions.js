@@ -31,7 +31,6 @@ class ModelSubscriptions extends RocketChat.models._Base {
 		this.cache.ensureIndex(['name', 'team', 'u._id'], 'unique');
 	}
 
-
 	// FIND ONE
 	findOneByRoomIdAndUserId(roomId, userId, options) {
 		const query = {
