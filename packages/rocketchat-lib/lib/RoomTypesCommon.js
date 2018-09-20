@@ -71,6 +71,8 @@ export class RoomTypesCommon {
 			};
 		}
 
+		routeData.team = subData.team;
+
 		return FlowRouter.path(this.roomTypes[roomType].route.name, routeData);
 	}
 

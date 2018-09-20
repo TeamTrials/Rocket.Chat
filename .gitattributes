@@ -15,7 +15,6 @@
 *.json text eol=lf
 *.md   text eol=lf
 *.php  text eol=lf
-*.svg  text eol=lf
 *.yml  text eol=lf
 *.hbs  text eol=lf
 
@@ -115,6 +114,6 @@ GitHub.Tests.Integration/Resources/*  binary
 *.pdb    binary
 *.sdf    binary
 *.7z     binary
-*.svg    text eol=lf
+*.svg    binary
 
 js/*/dist/*.js -diff
