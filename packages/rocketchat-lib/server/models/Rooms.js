@@ -31,7 +31,7 @@ class ModelRooms extends RocketChat.models._Base {
 	}
 
 	findOneByName(name, team, options) {
-		const query = {name, team};
+		const query = { name, team };
 
 		return this.findOne(query, options);
 	}
@@ -46,7 +46,7 @@ class ModelRooms extends RocketChat.models._Base {
 	}
 
 	findOneByDisplayName(fname, team, options) {
-		const query = {fname, team};
+		const query = { fname, team };
 
 		return this.findOne(query, options);
 	}

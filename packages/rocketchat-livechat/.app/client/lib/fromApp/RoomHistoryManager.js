@@ -153,7 +153,7 @@ export const RoomHistoryManager = new class {
 				typeName = subscription.t + subscription.team + '/' + subscription.name;
 			} else {
 				const curRoomDoc = ChatRoom.findOne({ _id: message.rid });
-				if(curRoomDoc != null) {
+				if (curRoomDoc != null) {
 					typeName = curRoomDoc.t + curRoomDoc.team + '/' + curRoomDoc.name;
 				}
 			}

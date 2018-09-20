@@ -22,14 +22,12 @@ class ModelSubscriptions extends RocketChat.models._Base {
 		this.tryEnsureIndex({ autoTranslateLanguage: 1 }, { sparse: 1 });
 		this.tryEnsureIndex({ 'userHighlights.0': 1 }, { sparse: 1 });
 
-		// ttrc additions 
-		// ttrc - Marc, note for eslinting I removed quotes from name, t, code and team. please confirm. 
+
+		// ttrc Logic - Marc, note for eslinting I removed quotes from ...  confirmed by Marc as needed Sept 20 2018
 		this.tryEnsureIndex({ 'u._id': 1, name: 1, t: 1, code: 1, team: 1 }, { unique: 1 });
 
-		// ttrc - Marc, this was removed by rc core team.  please confirm we dont need it.
-		// this.tryEnsureIndex({ 'unread': 1 });
-
-		// ttrc - this row was removed in Aug 2018 by rc core team to resolve a bug. 
+		// ttrc TODO - this row was removed in Aug 2018 by rc core team to resolve a bug.
+		// Marc please confirm that this row is still needed
 		this.cache.ensureIndex(['name', 'team', 'u._id'], 'unique');
 	}
 

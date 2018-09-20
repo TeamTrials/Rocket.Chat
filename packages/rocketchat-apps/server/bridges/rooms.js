@@ -20,6 +20,8 @@ export class AppRoomBridge {
 				method = 'createPrivateGroup';
 				// params.push(team)
 				throw new Error('Team not set');
+				// ttrc TODO - Marc, what should do to close on this
+				// unreachable code "break;"
 				break;
 			default:
 				throw new Error('Only channels and private groups can be created.');

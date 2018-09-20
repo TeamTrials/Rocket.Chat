@@ -123,7 +123,7 @@ Meteor.methods({
 					username: to.username,
 				},
 				...toNotificationPref,
-				team
+				team,
 			},
 		});
 

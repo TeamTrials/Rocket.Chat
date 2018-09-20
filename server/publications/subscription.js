@@ -29,7 +29,7 @@ const fields = {
 	autoTranslateLanguage: 1,
 	disableNotifications: 1,
 	hideUnreadStatus: 1,
-	team: 1
+	team: 1,
 };
 
 Meteor.methods({
