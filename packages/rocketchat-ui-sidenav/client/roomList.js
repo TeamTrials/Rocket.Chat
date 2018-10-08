@@ -82,7 +82,7 @@ Template.roomList.helpers({
 		}
 
 		const team = FlowRouter.getParam('team');
-		if(team) {
+		if (team) {
 			query.team = team;
 		}
 

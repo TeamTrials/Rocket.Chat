@@ -5,7 +5,7 @@ export class DirectMessageRoomRoute extends RoomTypeRouteConfig {
 	constructor() {
 		super({
 			name: 'direct',
-			path: '/:team/direct/:username'
+			path: '/:team/direct/:username',
 		});
 	}
 
@@ -38,7 +38,7 @@ export class DirectMessageRoomType extends RoomTypeConfig {
 		const query = {
 			t: 'd',
 			name: identifier,
-			team
+			team,
 		};
 
 		const subscription = RocketChat.models.Subscriptions.findOne(query);

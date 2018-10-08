@@ -20,7 +20,10 @@ export class AppRoomBridge {
 				method = 'createPrivateGroup';
 				// params.push(team)
 				throw new Error('Team not set');
-				break;
+				// ttrc TODO - Marc, what should do to close on this
+				// unreachable code "break;" Looks like an artifactr
+				// looks like an atrifact from a case statement, assume we just delete it.
+				// break;
 			default:
 				throw new Error('Only channels and private groups can be created.');
 		}
